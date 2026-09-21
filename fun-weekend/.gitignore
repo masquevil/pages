@@ -1,0 +1,15 @@
+# 抽帧临时目录：可随时删除，用 tools/extract/dy_ocr.py 重新生成
+media/dy_frames/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 若把本目录纳入 git：下面这行会把 1.3 GB 的视频素材一并提交，按需取舍
+media/dy_videos/
+
+# 图文笔记的原图（约 16 MB，很小）：原作者图片 URL 带签名会过期，这份是唯一存档，建议一起提交
+# media/dy_notes/
+
+# 说明：data/ocr/*.txt 与 data/*.json 都是产物，建议一起提交以便追溯；
+# 想保持仓库轻量可以忽略 data/ocr/ 与 media/，重新跑 tools/pipeline.sh + tools/extract/dy_ocr.py 即可重建。

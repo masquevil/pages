@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>无锡周末去哪儿玩</title>
+<meta name="description" content="从无锡出发的周末出行清单：省份 / 城市 / 月份 / 车程 / 时长 / 主题多选筛选，可排序，纯静态离线可用。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8F%95%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <h1>无锡周末去哪儿玩</h1>
+      <p class="sub">从无锡出发 · 数据来自小红书 10 条笔记 + 抖音收藏夹 25 条视频（画面 OCR 提取）· 可排序可筛选，离线可用</p>
+    </div>
+    <p class="stat">共 <b id="total">0</b> 个地点<span id="filtered"></span></p>
+  </header>
+
+  <section class="panel">
+    <div class="row">
+      <span class="label">省份</span>
+      <div class="chips" id="provinceChips"></div>
+      <span class="label">城市</span>
+      <select id="citySelect" title="按省分组，可选具体城市"></select>
+    </div>
+    <div class="row">
+      <span class="label">月份</span>
+      <div class="chips" id="monthChips"></div>
+      <span class="label">时长</span>
+      <div class="chips" id="stayChips"></div>
+    </div>
+    <div class="row">
+      <span class="label">车程</span>
+      <div class="chips" id="driveChips"></div>
+      <span class="label">主题</span>
+      <div class="chips" id="themeChips"></div>
+    </div>
+    <div class="row">
+      <input id="q" type="search" placeholder="搜地点、城市、亮点、备注（例如：露营 / 温泉 / 免费）">
+      <span class="label">排序</span>
+      <select id="sortKey"></select>
+      <button class="ghost" id="sortDir">升序 ↑</button>
+      <button class="ghost" id="reset">重置全部</button>
+    </div>
+  </section>
+
+  <section class="tableWrap">
+    <table id="tbl">
+      <thead>
+        <tr>
+          <th class="sortable" data-key="province">省份<span class="arw">↕</span></th>
+          <th class="sortable" data-key="city">城市<span class="arw">↕</span></th>
+          <th class="sortable" data-key="place">地点<span class="arw">↕</span></th>
+          <th class="sortable" data-key="month">月份<span class="arw">↕</span></th>
+          <th class="sortable" data-key="theme">主题<span class="arw">↕</span></th>
+          <th class="sortable" data-key="drive">车程（无锡出发）<span class="arw">↕</span></th>
+          <th class="sortable" data-key="stay">时长<span class="arw">↕</span></th>
+          <th>亮点</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p class="empty" id="empty" hidden>没有符合条件的地点，试试放宽筛选条件或点「重置全部」。</p>
+  </section>
+
+  <footer>
+    <p>车程为从无锡出发的参考值（含估算），出发前请用导航核对；「时长」是建议游玩时长，含过夜。城市列只到「市 / 县」一级（富阳 → 杭州、嘉定 → 上海），区镇等细节写在备注里。</p>
+    <p>备注末尾的编号是来源：<code>XHS-xx</code> 指小红书笔记、<code>DY-xx</code> 指抖音收藏条目（点编号可打开原链接）。抖音来源的地点来自视频画面字幕，括号里的秒数是该地点在视频中出现的时刻，可回看核对。</p>
+    <p>数据源：<code>docs/简版-周末出行清单.md</code>（人读版，手工维护这一份）；本页数据在 <code>assets/data.js</code>（由 <code>tools/render/build_simple.py</code> 生成），样式与逻辑是 <code>assets/style.css</code> / <code>assets/app.js</code>。</p>
+  </footer>
+</div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

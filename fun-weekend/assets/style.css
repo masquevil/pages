@@ -1,0 +1,84 @@
+/* 无锡周末去哪儿玩 —— 页面样式（手写维护，改完直接刷新即可，无需重新构建） */
+:root{
+  --bg:#f6f7f6; --card:#ffffff; --ink:#1c2b2a; --ink-2:#4b5b5a; --muted:#7d8c8b;
+  --line:#e3e8e7; --accent:#0f766e; --accent-soft:#e6f2f0; --accent-ink:#0b5d57;
+  --chip:#f2f5f4; --shadow:0 1px 2px rgba(16,24,23,.04), 0 8px 24px rgba(16,24,23,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#111716; --card:#171f1e; --ink:#e8efee; --ink-2:#c3cecd; --muted:#8c9a99;
+    --line:#26302f; --accent:#2dd4bf; --accent-soft:#12312e; --accent-ink:#7fe3d5;
+    --chip:#1d2726; --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+.wrap{max-width:1360px; margin:0 auto; padding:28px 20px 64px}
+header.hero{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:18px}
+h1{font-size:24px; margin:0 0 6px; letter-spacing:.2px}
+.sub{margin:0; color:var(--muted); font-size:13.5px}
+.stat{font-size:13px; color:var(--muted)}
+.stat b{color:var(--accent-ink); font-size:20px; font-variant-numeric:tabular-nums}
+
+.panel{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:14px 16px; margin-bottom:14px}
+.panel .row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:7px 0}
+.panel .row + .row{border-top:1px dashed var(--line)}
+.label{font-size:12.5px; color:var(--muted); min-width:44px; letter-spacing:.4px; flex:0 0 auto}
+.chips{display:flex; gap:6px; flex-wrap:wrap}
+select#citySelect{min-width:150px}
+.chip{
+  border:1px solid var(--line); background:var(--chip); color:var(--ink-2);
+  border-radius:999px; padding:4px 11px; font-size:13px; cursor:pointer; transition:.15s; user-select:none;
+}
+.chip:hover{border-color:var(--accent); color:var(--accent-ink)}
+.chip.on{background:var(--accent); border-color:var(--accent); color:#fff}
+@media (prefers-color-scheme: dark){.chip.on{color:#06201d}}
+.ghost{background:transparent; border:1px dashed var(--line); color:var(--muted); border-radius:999px; padding:4px 10px; font-size:12.5px; cursor:pointer}
+.ghost:hover{color:var(--accent-ink); border-color:var(--accent)}
+input[type=search],select{
+  font:inherit; font-size:13.5px; color:var(--ink); background:var(--card);
+  border:1px solid var(--line); border-radius:10px; padding:7px 10px; outline:none; min-width:150px;
+}
+input[type=search]{flex:1 1 200px}
+input[type=search]:focus,select:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+.spacer{flex:1}
+
+.tableWrap{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); overflow:auto}
+table{border-collapse:separate; border-spacing:0; width:100%; min-width:1240px}
+thead th{
+  position:sticky; top:0; z-index:2; background:color-mix(in srgb, var(--card) 92%, var(--bg));
+  backdrop-filter:blur(6px); text-align:left; font-size:12.5px; font-weight:600; color:var(--muted);
+  letter-spacing:.6px; padding:11px 12px; border-bottom:1px solid var(--line); white-space:nowrap;
+}
+thead th.sortable{cursor:pointer}
+thead th.sortable:hover{color:var(--accent-ink)}
+thead th .arw{opacity:.3; font-size:11px; margin-left:3px}
+thead th.sorted{color:var(--accent-ink)}
+thead th.sorted .arw{opacity:1}
+tbody td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; color:var(--ink-2)}
+tbody tr:nth-child(even){background:color-mix(in srgb, var(--card) 97%, var(--bg))}
+tbody tr:hover{background:var(--accent-soft)}
+tbody td.prov,td.month,td.drive,td.stay{white-space:nowrap; font-variant-numeric:tabular-nums}
+td.prov{color:var(--muted); min-width:74px}
+td.city{color:var(--muted); min-width:120px}
+td.place{font-weight:600; color:var(--ink); min-width:180px}
+td.theme-cell{min-width:62px; color:var(--ink-2)}
+/* 多值单元格（省份 / 城市 / 主题）：一个值一行 */
+td.prov .ln,td.city .ln,td.theme-cell .ln{display:block; white-space:nowrap; line-height:1.5}
+td.month .mb{display:inline-block; font-size:11px; color:var(--muted); border:1px solid var(--line); border-radius:5px; padding:0 4px; margin:3px 3px 0 0; font-variant-numeric:tabular-nums}
+td.hl{color:var(--ink); min-width:150px; word-break:keep-all}
+td.note{font-size:12.5px; color:var(--muted); max-width:330px}
+td.note a{color:var(--accent-ink); text-decoration:none; border-bottom:1px dotted var(--accent); white-space:nowrap}
+td.note a:hover{border-bottom-style:solid}
+.empty{text-align:center; color:var(--muted); padding:36px 10px; font-size:14px}
+footer{margin-top:18px; color:var(--muted); font-size:12.5px; line-height:1.8}
+footer code{background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 5px}
+@media (max-width:640px){
+  .wrap{padding:18px 12px 48px}
+  h1{font-size:20px}
+  .label{min-width:38px}
+}
