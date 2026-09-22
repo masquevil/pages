@@ -4,3 +4,11 @@
 
 1. [桌游 - 国家宝藏](./treasure/)
 2. [周末去哪儿玩](./fun-weekend/)
+
+## Contribution
+
+更改完此文件需要执行以下命令生成 html：
+
+```sh
+./md2html.sh
+```
