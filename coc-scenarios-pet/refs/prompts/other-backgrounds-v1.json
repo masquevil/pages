@@ -1,0 +1,42 @@
+{
+  "cover": {
+    "scene": "A lonely winding road travels toward a far unseen horizon. A few abstract reeds and distant silhouettes suggest the beginning of a solemn journey. No city, no ruins. Keep the title area visually quiet.",
+    "pet": "x=42%, y=77%"
+  },
+  "01": {
+    "scene": "A modest lived-in home: a simple chair, a tall window, and a restrained suggestion of a caring person's arm near the chair. Quiet warmth and safety, not a portrait. No city, no ruins.",
+    "pet": "x=37%, y=81%"
+  },
+  "02": {
+    "scene": "Night inside the same modest home: the shut front door dominates the right side, a small pale moon beyond a window, the uneasy silence after a person did not return. No person, no city, no ruins.",
+    "pet": "x=39%, y=83%"
+  },
+  "03": {
+    "scene": "A quiet home interior after a long wait: simple doorway on the left and window in the middle; an empty right-hand floor area because a separate foreground rubbish-bin layer will be placed there later. No pets or people, no city.",
+    "pet": "three separate empty spaces at x=20%,49%,80%; floor contact around y=80%,59%,80%"
+  },
+  "04": {
+    "scene": "The first morning of impossible light: two groups of humble rooftops low on the sides, thin dawn suggestions, a broad open center for a floating pet and its separate halo layer. No city, no ruins.",
+    "pet": "x=49%, y=60%, floating"
+  },
+  "05": {
+    "scene": "A winding path leaves a familiar home behind and reaches an empty horizon. Small low silhouettes of distant fields and trees, a deliberate sense of setting out. No ancient city, no ruins.",
+    "pet": "x=44%, y=79%"
+  },
+  "06": {
+    "scene": "A dark uncanny valley with two or three enormous angular rock masses; at the right two small mysterious childlike figures offer refuge. They are abstract, modest and solemn, NOT cute dolls and NOT the tall white guide of the reference city. Keep the valley readable with a wide open passage. No city, no ruins.",
+    "pet": "x=34%, y=84%"
+  },
+  "08": {
+    "scene": "An uncanny dream sea with a low shore and several broad slate-blue water planes, plenty of untouched white air. On the right stands one SHORT elderly teacher with a small muted-gold laurel crown, distinct from the city's tall guide. Leave space for a separate pet and wing effect. No city, no ruins.",
+    "pet": "x=32%, y=71%"
+  },
+  "09": {
+    "scene": "Deep space imagined as spare white paper with a few isolated charcoal stars; on the right a single monumental silver-key gate, an unmistakable bold arch silhouette with a small keyhole. No city or streets. Leave room for a separately floating pet and wing effect.",
+    "pet": "x=33%, y=81%"
+  },
+  "10": {
+    "scene": "A vast stone throne formed from two or three broad charcoal-gray blocks on the right, bearing one merciful but unknowable faceless deity, abstract and sculptural with no human facial features. Quiet cosmic mystery, no city. Leave open foreground for a separately layered pet and wing effect.",
+    "pet": "x=30%, y=84%"
+  }
+}

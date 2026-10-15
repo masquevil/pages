@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>一只小狗的探险 · 绘本工作台</title>
+  <link rel="icon" href="assets/pets/dog/healthy-back.png" type="image/png">
+  <link rel="stylesheet" href="css/page.css?v=1">
+  <link rel="stylesheet" href="css/book.css?v=1">
+  <script defer src="js/data.js?v=2"></script>
+  <script defer src="js/pet-layout.js?v=2"></script>
+  <script defer src="js/prop-layout.js"></script>
+  <script defer src="js/book.js?v=2"></script>
+  <script defer src="js/app.js?v=6"></script>
+</head>
+<body>
+  <header class="workbench-container">
+    <div class="workbench-heading"><div><span class="workbench-eyebrow">A LITTLE JOURNEY · 绘本工作台</span><h1>宠物冒险绘本</h1></div></div>
+    <p class="workbench-intro">同一个故事，不同的小小伙伴。点击主角更换宠物，再把故事打印下来。</p>
+    <div class="workbench-controls">
+      <fieldset id="pets"><legend>故事的主角</legend></fieldset>
+      <div class="workbench-settings">
+        <label class="check"><input type="checkbox" id="note" checked> 附带线索字条</label>
+      </div>
+      <div class="workbench-actions"><button id="print-all" class="primary">打印整本 · 7 张 A4</button><button id="print-page">打印当前页</button></div>
+    </div>
+    <details><summary>打印设置与素材说明</summary><p>A4 横向 · 单面 · 100%／实际大小 · 每张纸 1 页 · 关闭页眉页脚，建议开启背景图形。打印按钮打开仅含绘本的新窗口；请允许本站弹窗。网页已排好左右两页，沿纸张中点裁开。</p><p>场景插画、宠物、文字、边饰与效果分别排版，除字条外的书页复用相同边饰；实际打印的用墨量与清晰度请试印确认。</p></details>
+    <p id="status" role="status" aria-live="polite"></p>
+  </header>
+  <nav class="reader-container" aria-label="绘本阅读控制">
+    <label>阅读方式 <select id="view"><option value="all" selected>整本双页预览</option><option value="single">单页预览</option></select></label>
+    <button id="previous">上一页</button>
+    <label>翻到 <select id="page"></select></label>
+    <button id="next">下一页</button>
+    <label>正文字体 <select id="font"><option value="noto">思源宋体 · 稳妥基准</option><option value="xiaowei">站酷小薇体 · 当前对照</option><option value="longcang" selected>龙藏体 · 手写毛笔</option><option value="qingke">站酷庆科黄油体 · 圆润装饰</option><option value="mashan">马善政 · 浓重楷书</option><option value="zhimang">志莽行书 · 连笔</option><option value="liujian">刘建毛草 · 草书</option><option value="kuaile">站酷快乐体 · 几何趣味</option><option value="sans">思源黑体 · 现代无衬线</option></select></label>
+    <span id="page-label"></span>
+  </nav>
+  <main id="preview" aria-label="绘本预览"></main>
+  <div id="print-root" aria-hidden="true"></div>
+  <noscript>此绘本需要开启 JavaScript 才能切换主角和排版打印。</noscript>
+</body>
+</html>

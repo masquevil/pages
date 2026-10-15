@@ -1,0 +1,443 @@
+/* 绘本字体、页面排版与打印 */
+/* 通用盒模型：打印窗口仅加载本文件，也必须保持纸张尺寸准确。 */
+* {
+  box-sizing: border-box;
+}
+
+/* 本地字体及绘本字体选择 */
+@font-face {
+  font-family: "Noto Serif SC";
+  src: url("../assets/fonts/NotoSerifSC-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZCOOL XiaoWei";
+  src: url("../assets/fonts/ZCOOLXiaoWei-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Long Cang";
+  src: url("../assets/fonts/LongCang-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZCOOL QingKe HuangYou";
+  src: url("../assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ma Shan Zheng";
+  src: url("../assets/fonts/MaShanZheng-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zhi Mang Xing";
+  src: url("../assets/fonts/ZhiMangXing-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Liu Jian Mao Cao";
+  src: url("../assets/fonts/LiuJianMaoCao-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZCOOL KuaiLe";
+  src: url("../assets/fonts/ZCOOLKuaiLe-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("../assets/fonts/NotoSansSC-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+body {
+  --book-font: "Long Cang", "Noto Serif SC", serif;
+}
+
+body[data-book-font="noto"] {
+  --book-font: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+}
+
+body[data-book-font="xiaowei"] {
+  --book-font: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+}
+
+body[data-book-font="longcang"] {
+  --book-font: "Long Cang", "Noto Serif SC", serif;
+}
+
+body[data-book-font="qingke"] {
+  --book-font: "ZCOOL QingKe HuangYou", "Noto Serif SC", serif;
+}
+
+body[data-book-font="mashan"] {
+  --book-font: "Ma Shan Zheng", "Noto Serif SC", serif;
+}
+
+body[data-book-font="zhimang"] {
+  --book-font: "Zhi Mang Xing", "Noto Serif SC", serif;
+}
+
+body[data-book-font="liujian"] {
+  --book-font: "Liu Jian Mao Cao", "Noto Serif SC", serif;
+}
+
+body[data-book-font="kuaile"] {
+  --book-font: "ZCOOL KuaiLe", "Noto Serif SC", serif;
+}
+
+body[data-book-font="sans"] {
+  --book-font: "Noto Sans SC", "Noto Serif SC", sans-serif;
+}
+
+/* 纸张、半页与边饰 */
+.sheet {
+  display: flex;
+  position: relative;
+  width: 297mm;
+  height: 210mm;
+  background: white;
+  margin: 0 auto 24px;
+  box-shadow: 0 5px 28px #364d4017;
+}
+
+.leaf {
+  flex: 0 0 148.5mm;
+  width: 148.5mm;
+  height: 210mm;
+  background: #fff;
+  padding: 15mm 16mm 14mm;
+  position: relative;
+  color: #3d3b38;
+  isolation: isolate;
+}
+
+.page-decoration {
+  position: absolute;
+  inset: 5mm;
+  width: calc(100% - 10mm);
+  height: calc(100% - 10mm);
+  object-fit: fill;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 场景、宠物与前景道具图层 */
+.background {
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent), linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
+  mask-composite: intersect;
+  margin-left: 2mm;
+}
+
+.single-leaf {
+  margin: auto;
+  box-shadow: 0 5px 28px #364d4017;
+}
+
+.illustration {
+  position: relative;
+  width: 102mm;
+  height: 70mm;
+  margin: 3mm auto 11mm;
+}
+
+.background, .foreground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.foreground {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pet {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  transform: translate(-50%, -100%);
+  aspect-ratio: 145 / 155;
+  z-index: 3;
+}
+
+.pet:hover {
+  background: transparent;
+}
+
+.pet img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pet.flipped img {
+  transform: scaleX(-1);
+}
+
+.positioned-prop {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: auto;
+}
+
+.positioned-prop.flipped {
+  transform: translate(-50%, -100%) scaleX(-1);
+}
+
+.foreground.positioned-prop {
+  z-index: 2;
+}
+
+.ink-mark {
+  z-index: 2;
+}
+
+.effect {
+  position: absolute;
+  transform: translate(-50%, -86%);
+  aspect-ratio: 1;
+  z-index: 1;
+}
+
+/* 正文及透明文字底色 */
+.story {
+  margin: 0 2mm;
+  font-family: var(--book-font);
+  font-size: 11pt;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  padding-top: 7mm;
+  position: relative;
+  isolation: isolate;
+}
+
+.story-wash {
+  position: absolute;
+  left: 19mm;
+  top: 95mm;
+  width: 110mm;
+  height: 60mm;
+  object-fit: fill;
+  z-index: -1;
+  pointer-events: none;
+  transform: scale(1.4);
+  opacity: 0.8;
+}
+
+.story p {
+  position: relative;
+  margin: 0 0 2.3mm;
+}
+
+.leaf.short {
+  padding-top: 28mm;
+}
+
+.short .story {
+  margin: 0 3mm;
+  padding-top: 0;
+  font-size: 13pt;
+  line-height: 1.65;
+}
+
+.short .story-wash {
+  top: 102mm;
+}
+
+.ornament {
+  color: #a0ac93;
+  font-size: 17px;
+  text-align: center;
+  margin: 8mm 0 0;
+}
+
+.folio {
+  position: absolute;
+  z-index: 1;
+  bottom: 10mm;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font: 10px Georgia, serif;
+  color: #303030;
+  letter-spacing: .16em;
+  -webkit-text-stroke: 4px #fff;
+  paint-order: stroke fill;
+  text-shadow: 0 0 3px #fff;
+}
+
+/* 封面、涂黑页及线索字条 */
+.cover {
+  padding-top: 26mm;
+}
+
+.cover h2 {
+  font-family: var(--book-font);
+  font-size: 25pt;
+  letter-spacing: .1em;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 0 8mm;
+}
+
+.cover .illustration {
+  margin-top: 6mm;
+  height: 76mm;
+  width: 114mm;
+}
+
+.cover .cover-caption {
+  text-align: center;
+  letter-spacing: .24em;
+  font-size: 11px;
+  color: #949585;
+  margin-top: 12mm;
+}
+
+.ink .illustration {
+  margin-top: 32mm;
+}
+
+.ink.reverse .background {
+  transform: rotate(180deg);
+}
+
+.note-content {
+  margin-top: 57mm;
+  padding: 10mm 4mm;
+  border-top: 1px dashed #aaa;
+  border-bottom: 1px dashed #aaa;
+  font-family: "Kaiti SC", "STKaiti", serif;
+  font-size: 18pt;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* 对折与裁切标记 */
+.cut {
+  position: absolute;
+  left: 50%;
+  top: 5mm;
+  height: 4mm;
+  border-left: 1px solid #bbb;
+}
+
+.cut.bottom {
+  top: auto;
+  bottom: 5mm;
+}
+
+/* 独立打印窗口与浏览器原生打印 */
+body.print-document {
+  margin: 0;
+  background: white;
+}
+
+.print-document .sheet {
+  margin: 0;
+  box-shadow: none;
+}
+
+.print-document .sheet, .print-document .leaf {
+  zoom: 1;
+}
+
+#print-root {
+  display: none;
+}
+
+/* 小屏幕绘本预览：打印纸张本身不缩放 */
+@media (max-width: 700px) {
+  #preview {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .single-leaf {
+    margin-left: auto;
+    margin-right: auto;
+    zoom: .6;
+  }
+
+  .sheet {
+    zoom: .42;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  body:not(.print-document) > :not(#print-root) {
+    display: none !important;
+  }
+
+  .workbench-container, .reader-container, .pager, #preview, noscript {
+    display: none !important;
+  }
+
+  #print-root {
+    display: block;
+  }
+
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+    break-inside: avoid;
+    zoom: 1;
+  }
+
+  .sheet:last-child {
+    break-after: auto;
+  }
+
+  .leaf {
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .pet {
+    cursor: default;
+  }
+}
