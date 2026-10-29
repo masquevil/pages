@@ -1,7 +1,8 @@
 // 无锡周末去哪儿玩 —— 前端逻辑（手写维护）：筛选 / 排序 / 渲染
 // 依赖 assets/data.js 提供的 window.PLACES 与 window.CITY_GROUPS
 (function () {
-  const PLACES = window.PLACES || [];
+  const hiddenIds = new Set((window.HIDDEN_PLACES || []).map((p) => p.id));
+  const PLACES = (window.PLACES || []).filter((p) => !hiddenIds.has(p.id));
   const CITY_GROUPS = window.CITY_GROUPS || [];
   const MONTH_NAMES = ['1 月','2 月','3 月','4 月','5 月','6 月','7 月','8 月','9 月','10 月','11 月','12 月'];
   const DRIVE_BUCKETS = [
@@ -156,7 +157,7 @@
       return c * state.dir;
     });
 
-    $('tbody').innerHTML = rows.map((p) => '<tr>' +
+    $('tbody').innerHTML = rows.map((p) => '<tr data-place-id="' + p.id + '">' +
       '<td class="prov">' + lines(p.provinces) + '</td>' +
       '<td class="city">' + lines(p.cities) + '</td>' +
       '<td class="place">' + p.place + '</td>' +
